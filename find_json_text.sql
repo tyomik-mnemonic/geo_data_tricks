@@ -1,0 +1,1 @@
+select * from fias_data_load.locations where locations.response::text LIKE '%"Level":60,"%'
