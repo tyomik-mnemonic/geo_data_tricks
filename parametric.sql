@@ -15,3 +15,12 @@
 --	set forc_spl_geom =  ST_SimplifyPreserveTopology(wkb_geometry, 24::double precision)
 select * from public.planet_osm_point where name = 'Площадь Революции' and railway is not null or
 name = 'Щербинка' and railway is not null 
+
+SELECT ogc_fid,key,
+	CASE 
+	WHEN %zoom%<5::integer THEN
+        WHEN %zoom%<8 and %zoom%>4::integer THEN
+        ELSE wkb_geometry
+	end 
+FROM 
+alter table input.fed_city_and_region
